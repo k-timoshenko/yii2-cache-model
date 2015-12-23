@@ -1,0 +1,26 @@
+# General
+# composer.lock
+build
+docs
+vendor
+
+# Cache directories
+Thumbs.db
+*.DS_Store
+*.empty
+
+# PhpStorm project files
+.idea
+
+# Netbeans project files
+nbproject
+
+# Eclipse, zend studio, aptana or other eclipse like project files
+.buildpath
+.project
+.settings
+
+
+# Mac deployment helpers
+switch
+index
