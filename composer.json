@@ -1,0 +1,35 @@
+{
+  "name": "t-kanstantsin/yii2-cache-model",
+  "description": "Caching static models component for Yii 2 framework.",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii",
+    "extension",
+    "yii2",
+    "yii 2",
+    "cache"
+  ],
+  "homepage": "https://github.com/t-kanstantsin/yii2-cache-model",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Konstantin Timoshenko",
+      "email": "t.kanstantsin@gmail.com",
+      "homepage": "https://github.com/t-kanstantsin",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "tkanstantsin\\cache\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
