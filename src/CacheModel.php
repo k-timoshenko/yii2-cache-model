@@ -48,10 +48,11 @@ class CacheModel extends Component
 
     /**
      * @param string $className
-     * @param int|null $id
+     * @param int|bool $id - id of model. `False` for all records of the model.
+     * @note: `null` - usual case when record is not defined, so default value for $id was changed to `false`
      * @return array|null|\yii\base\Object|\yii\base\Object[]
      */
-    public function get($className, $id = null)
+    public function get($className, $id = false)
     {
         $this->setModels($className);
 
@@ -71,11 +72,11 @@ class CacheModel extends Component
     /**
      * Returns cached model from local storage
      * @param string $className
-     * @param int|array|null $id
+     * @param int|bool $id
+     * @see CacheModel::get()
      * @return array|null|\yii\base\Object|\yii\base\Object[]
-     * @throws \yii\base\Exception
      */
-    public function getCachedModel($className, $id = null)
+    public function getCachedModel($className, $id = false)
     {
         $modelArray = ArrayHelper::getValue($this->models, $className, []);
 
