@@ -80,7 +80,7 @@ class CacheModel extends Component
     {
         $modelArray = ArrayHelper::getValue($this->models, $className, []);
 
-        if ($id === null) {
+        if ($id === false) {
             return $modelArray;
         } elseif (is_array($id)) {
             $idArray = $id;
