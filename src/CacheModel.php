@@ -42,6 +42,18 @@ class CacheModel extends Component
     public $cache = 'cache';
 
     /**
+     * Component for db queries
+     * @var string
+     */
+    public $db = 'db';
+
+    /**
+     * Additional model filters (e.g. is_deleted => false)
+     * @var array
+     */
+    public $filters;
+
+    /**
      * @var array
      */
     protected $models = [];
@@ -183,7 +195,14 @@ class CacheModel extends Component
 
         $tableNameMethod = $this->tableNameMethod;
 
-        return (new Query())->from($className::{$tableNameMethod}())->all();
+        $query = (new Query())
+            ->from($className::{$tableNameMethod}());
+
+        if (($filter = ArrayHelper::getValue($this->filters, $className)) !== null) {
+            $query->where($filter);
+        }
+
+        return $query->all($this->getDbComponent());
     }
 
     /**
@@ -209,5 +228,14 @@ class CacheModel extends Component
     protected function getCacheComponent()
     {
         return \Yii::$app->{$this->cache};
+    }
+
+    /**
+     * Gets global `db` component
+     * @return \yii\db\Connection
+     */
+    protected function getDbComponent()
+    {
+        return \Yii::$app->{$this->db};
     }
 }
