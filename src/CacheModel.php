@@ -52,6 +52,11 @@ class CacheModel extends Component
      * @var array
      */
     public $filters;
+    /**
+     * Order parameters
+     * @var array
+     */
+    public $orders;
 
     /**
      * @var array
@@ -200,6 +205,10 @@ class CacheModel extends Component
 
         if (($filter = ArrayHelper::getValue($this->filters, $className)) !== null) {
             $query->where($filter);
+        }
+
+        if (($orderBy = ArrayHelper::getValue($this->orders, $className)) !== null) {
+            $query->orderBy($orderBy);
         }
 
         return $query->all($this->getDbComponent());
